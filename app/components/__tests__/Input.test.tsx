@@ -4,9 +4,9 @@ import Input from '../Input';
 
 describe('input', () => {
   it('renders input', () => {
-    render(<Input inputName="bill" labelText="Bill" value="" />);
+    render(<Input inputName="bill" value="" />);
 
-    const input = screen.getByRole('textbox', { name: /bill/i });
+    const input = screen.getByRole('textbox');
 
     expect(input).toBeInTheDocument();
   });
@@ -15,9 +15,9 @@ describe('input', () => {
     const user = userEvent.setup();
     const handleChange = jest.fn();
 
-    render(<Input inputName="bill" labelText="Bill" value="" handleChange={handleChange} />);
+    render(<Input inputName="bill" value="" handleChange={handleChange} />);
 
-    const input = screen.getByRole('textbox', { name: /bill/i });
+    const input = screen.getByRole('textbox');
 
     await user.type(input, '1');
 

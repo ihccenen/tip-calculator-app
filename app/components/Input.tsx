@@ -3,31 +3,24 @@ import Image from 'next/image';
 type InputProps = {
   inputName: string;
   value: string;
-  labelText?: string;
+  placeholder?: string;
   svg?: string;
   alt?: string;
   handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export default function Input({
-  labelText,
   inputName,
   value,
+  placeholder,
   svg,
   alt,
   handleChange,
 }: InputProps) {
   return (
-    <label htmlFor={inputName}>
-      {labelText}
+    <>
       {svg && (
-        <Image
-          priority
-          src={svg}
-          height={18}
-          width={16}
-          alt={alt ?? ''}
-        />
+        <Image priority src={svg} height={18} width={16} alt={alt ?? ''} />
       )}
       <input
         type="text"
@@ -35,14 +28,14 @@ export default function Input({
         id={inputName}
         value={value}
         onChange={handleChange}
-        placeholder="0"
+        placeholder={placeholder}
       />
-    </label>
+    </>
   );
 }
 
 Input.defaultProps = {
-  labelText: '',
+  placeholder: '',
   svg: '',
   alt: '',
   handleChange: () => {},
