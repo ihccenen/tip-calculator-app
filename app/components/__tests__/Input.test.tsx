@@ -4,7 +4,7 @@ import Input from '../Input';
 
 describe('input', () => {
   it('renders input', () => {
-    render(<Input inputName="bill" value="" />);
+    render(<Input name="bill" value="" />);
 
     const input = screen.getByRole('textbox');
 
@@ -15,7 +15,7 @@ describe('input', () => {
     const user = userEvent.setup();
     const handleChange = jest.fn();
 
-    render(<Input inputName="bill" value="" handleChange={handleChange} />);
+    render(<Input name="bill" value="" handleChange={handleChange} />);
 
     const input = screen.getByRole('textbox');
 
