@@ -1,6 +1,23 @@
 {
-  "extends": ["next/core-web-vitals", "airbnb", "airbnb-typescript", "plugin:react/jsx-runtime"],
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb",
+    "airbnb-typescript",
+    "plugin:react/jsx-runtime"
+  ],
   "parserOptions": {
     "project": "./tsconfig.json"
+  },
+  "rules": {
+    "react/require-default-props": 0,
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "labelComponents": ["CustomInputLabel"],
+        "labelAttributes": ["label"],
+        "controlComponents": ["CustomInput"],
+        "depth": 3
+      }
+    ]
   }
 }
