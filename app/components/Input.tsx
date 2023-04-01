@@ -1,8 +1,10 @@
 import Image from 'next/image';
 
 type InputProps = {
-  inputName: string;
+  name: string;
   value: string;
+  type?: string;
+  checked?: boolean;
   placeholder?: string;
   svg?: string;
   alt?: string;
@@ -10,12 +12,14 @@ type InputProps = {
 };
 
 export default function Input({
-  inputName,
+  name,
   value,
-  placeholder,
-  svg,
-  alt,
-  handleChange,
+  type = 'text',
+  checked,
+  placeholder = '',
+  svg = '',
+  alt = '',
+  handleChange = () => {},
 }: InputProps) {
   return (
     <>
@@ -23,20 +27,14 @@ export default function Input({
         <Image priority src={svg} height={18} width={16} alt={alt ?? ''} />
       )}
       <input
-        type="text"
-        name={inputName}
-        id={inputName}
+        type={type}
+        name={name}
+        id={name}
         value={value}
         onChange={handleChange}
         placeholder={placeholder}
+        checked={checked}
       />
     </>
   );
 }
-
-Input.defaultProps = {
-  placeholder: '',
-  svg: '',
-  alt: '',
-  handleChange: () => {},
-};
