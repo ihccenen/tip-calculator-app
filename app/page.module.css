@@ -1,20 +1,39 @@
-.form {
+.logo {
   display: flex;
-  background-color: hsl(0, 0%, 100%);
-  max-width: 920px;
-  border-radius: 25px;
-  padding: 2.9em;
-  gap: 3.1rem;
-  flex-wrap: wrap;
+  margin-inline: auto;
+  margin-top: 5em;
 }
 
-.form div {
-  flex: 1 1 0;
+.form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+  max-width: 1025px;
+  background-color: hsl(0, 0%, 100%);
+  padding: 2.25em;
+  gap: 2em;
+  border-radius: 25px;
+  margin-inline: auto;
+  margin-top: 4em;
 }
 
 .inputsWrapper {
-  display: grid;
-  gap: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.9rem;
+  padding: 1em;
+}
+
+.form input,
+.button {
+  font-size: 1.5rem;
+  border-radius: 4px;
+}
+
+.form input,
+.fieldset label,
+.button {
+  padding: 0.3em 0.5em;
+  border: 3px solid transparent;
 }
 
 .label {
@@ -22,34 +41,25 @@
   color: hsl(186, 14%, 43%);
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
-}
-
-.form input,
-.fieldset label {
-  padding: 0.17em 0.5em;
+  gap: 0.5rem;
 }
 
 .form input[type='text'] {
-  font-family: inherit;
-  font-size: 1.5rem;
   text-align: end;
   color: hsl(183, 100%, 15%);
   background-color: hsl(189, 41%, 97%);
-  border: 2px solid transparent;
-  border-radius: 4px;
   outline: transparent;
   cursor: pointer;
 }
 
 .form input:is(:hover, :focus) {
-  border: 2px solid hsl(172, 67%, 45%);
+  border: 3px solid hsl(172, 67%, 45%);
 }
 
 .fieldset {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(117px, 1fr));
+  gap: 1.15rem;
   border: none;
   color: hsl(186, 14%, 43%);
 }
@@ -69,12 +79,14 @@
   font-size: 1.5rem;
 }
 
+.button:hover,
 .fieldset label:hover {
   color: hsl(183, 100%, 15%);
   background-color: hsl(185, 41%, 84%);
   cursor: pointer;
 }
 
+.button,
 .fieldset input[type='radio']:checked ~ label {
   color: hsl(183, 100%, 15%);
   background-color: hsl(172, 67%, 45%);
@@ -85,8 +97,75 @@
   visibility: hidden;
 }
 
+.form input.invalid {
+  border: 3px solid hsl(14, 40%, 57%);
+}
+
 .form img {
   position: absolute;
   bottom: 20%;
   left: 5%;
+}
+
+.tip {
+  display: flex;
+  flex-direction: column;
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(183, 100%, 15%);
+  border-radius: 15px;
+  padding: 2.6em;
+  gap: 1.9rem;
+  justify-content: space-between;
+}
+
+.price {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.person {
+  font-size: 0.8rem;
+  color: hsl(184, 14%, 56%);
+}
+
+.amount {
+  font-size: 3rem;
+  color: hsl(172, 67%, 45%);
+  justify-self: end;
+}
+
+.button:is(:disabled) {
+  background-color: hsl(183, 79%, 24%);
+  cursor: default;
+}
+
+.numOfPeople {
+  display: flex; 
+  justify-content: space-between;
+}
+
+.invalid {
+  color: hsl(14, 40%, 57%);
+}
+
+@media screen and (max-width: 425px) {
+  .logo {
+    margin-top: 3.2em;
+  }
+
+  .form {
+    padding: 1.4em;
+    margin-top: 3.4em;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .inputsWrapper {
+    gap: 2rem;
+  }
+
+  .tip {
+    padding: 1.5em;
+  }
 }
