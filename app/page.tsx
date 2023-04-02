@@ -23,6 +23,16 @@ export default function Home() {
     numOfPeople.reset();
   };
 
+  let tipPerPerson: number | null = null;
+  let total: number | null = null;
+
+  if (parseInt(numOfPeople.value, 10) > 0) {
+    const percent = parseFloat(tip.value) / 100;
+    const tipAmount = (percent * parseFloat(bill.value));
+    tipPerPerson = tipAmount / parseInt(numOfPeople.value, 10);
+    total = (parseFloat(bill.value) + tipAmount) / parseInt(numOfPeople.value, 10);
+  }
+
   const btnDisabled = bill.value === '' && tip.value === '' && numOfPeople.value === '';
 
   return (
@@ -85,14 +95,20 @@ export default function Home() {
                 <p>Tip Amount</p>
                 <p className={styles.person}>/ person</p>
               </div>
-              <div className={styles.amount}>$0.00</div>
+              <div className={styles.amount}>
+                $
+                {tipPerPerson ? tipPerPerson.toFixed(2) : '0.00'}
+              </div>
             </div>
             <div className={styles.price}>
               <div>
                 <p>Total</p>
                 <p className={styles.person}>/ person</p>
               </div>
-              <div className={styles.amount}>$0.00</div>
+              <div className={styles.amount}>
+                $
+                {total ? total.toFixed(2) : '0.00'}
+              </div>
             </div>
           </div>
           <button
